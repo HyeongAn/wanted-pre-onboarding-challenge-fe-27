@@ -5,7 +5,7 @@ import { Typography } from '@/components/ui/Typography'
 import ROUTERS_CONFIG from '@/constants/router'
 import useAuth from '@/hooks/useAuth'
 import { signInSchema } from '@/schemas/sign'
-import { UserService } from '@/services/user/userService'
+import { userService } from '@/services/user/userService'
 import { LoginRequest } from '@/types/user'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
@@ -17,7 +17,7 @@ const Login = () => {
   const { login } = useAuth()
 
   const { mutate: loginMutate } = useMutation({
-    mutationFn: (params: LoginRequest) => new UserService().login(params),
+    mutationFn: (params: LoginRequest) => userService.login(params),
   })
 
   const {

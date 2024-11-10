@@ -1,4 +1,5 @@
-import { AUTH_CONFIG } from '@/constants'
+import { AUTH_CONFIG } from '@/constants/auth'
+import { Service } from '@/services/service'
 import { authState } from '@/stores/atoms'
 import { useCallback } from 'react'
 import { useRecoilState } from 'recoil'
@@ -8,14 +9,16 @@ const useAuth = () => {
 
   const login = useCallback(
     (accessToken: string) => {
-      setAuth((prev) => ({ ...prev, isAuthenticated: true }))
+      Service.setAccessToken(accessToken)
+      setAuth((prev) => ({ ...prev, isAuthenticated: true, accessToken }))
       localStorage.setItem(AUTH_CONFIG.LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken)
     },
     [setAuth],
   )
 
   const logout = useCallback(() => {
-    setAuth((prev) => ({ ...prev, isAuthenticated: false }))
+    Service.setAccessToken()
+    setAuth((prev) => ({ ...prev, isAuthenticated: false, accessToken: null }))
     localStorage.removeItem(AUTH_CONFIG.LOCAL_STORAGE_KEYS.ACCESS_TOKEN)
   }, [setAuth])
 
