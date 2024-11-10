@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/Input'
 import { Typography } from '@/components/ui/Typography'
 import ROUTERS_CONFIG from '@/constants/router'
 import { signUpSchema } from '@/schemas/sign'
-import { UserService } from '@/services/user/userService'
+import { userService } from '@/services/user/userService'
 import { SignUpRequest } from '@/types/user'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Label } from '@radix-ui/react-label'
@@ -28,7 +28,7 @@ const Signup = () => {
   })
 
   const { mutate: signUpMutate } = useMutation({
-    mutationFn: (params: SignUpRequest) => new UserService().signUp(params),
+    mutationFn: (params: SignUpRequest) => userService.signUp(params),
   })
 
   const handleSubmit: SubmitHandler<z.infer<typeof signUpSchema>> = async (data) => {

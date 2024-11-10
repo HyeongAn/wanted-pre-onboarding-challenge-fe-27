@@ -3,6 +3,7 @@ const ROUTERS_CONFIG = {
   LOGIN: '/auth',
   SIGNUP: '/auth/signup',
   TODO: '/todo',
+  TODO_DETAIL: (id: string) => `/todo/:${id}`,
 }
 
 export default ROUTERS_CONFIG

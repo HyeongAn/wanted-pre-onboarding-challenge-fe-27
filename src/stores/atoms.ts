@@ -1,6 +1,6 @@
+import { AUTH_CONFIG } from '@/constants/auth'
+import { IAuth } from '@/types/auth'
 import { atom } from 'recoil'
-import { IAuth } from '@/types'
-import { AUTH_CONFIG } from '@/constants'
 
 export const authState = atom<IAuth>({
   key: 'authState',

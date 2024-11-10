@@ -1,19 +1,17 @@
 import { USER_API } from '@/constants/api/user'
-import { Service } from '../service'
+import api from '../service'
 import { LoginRequest, SignUpRequest } from '@/types/user'
 
-export class UserService extends Service {
-  constructor(accessToken?: string) {
-    super(accessToken)
-  }
-
+class UserService {
   async login(params: LoginRequest): Promise<{ message: string; token: string }> {
-    const response = await this.api.post(USER_API.LOGIN, params)
+    const response = await api.post(USER_API.LOGIN, params)
     return response.data
   }
 
   async signUp(params: SignUpRequest): Promise<{ message: string; token: string }> {
-    const response = await this.api.post(USER_API.SIGNUP, params)
+    const response = await api.post(USER_API.SIGNUP, params)
     return response.data
   }
 }
+
+export const userService = new UserService()
