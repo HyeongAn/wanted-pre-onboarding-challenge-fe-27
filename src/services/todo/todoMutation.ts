@@ -2,6 +2,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { todoQueryKeys } from './todoQueries'
 import { todoService } from './todoService'
 
+// 하나의 hooks이기때문에 하나로 묶어두지 않음.
+
 export const useCreateTodoMutation = () => {
   const queryClient = useQueryClient()
 
