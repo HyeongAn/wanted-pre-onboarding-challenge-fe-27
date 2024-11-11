@@ -7,7 +7,7 @@ import Todo from '@/page/Todo'
 import Login from '@/page/Login'
 import Signup from '@/page/Signup'
 import TodoDetail from '@/page/TodoDetail'
-import { loader as todoLoader } from '@/loaders'
+import { todoLoader, todoDetailLoader } from '@/loaders'
 import queryClient from '@/lib/queryClient'
 
 const router = createBrowserRouter([
@@ -27,6 +27,7 @@ const router = createBrowserRouter([
       {
         path: ROUTERS_CONFIG.TODO_DETAIL(':todoId'),
         element: <TodoDetail />,
+        loader: todoDetailLoader(queryClient),
       },
     ],
   },

@@ -1,13 +1,11 @@
 import React from 'react'
 import useAuth from '@/hooks/useAuth'
 import { Todos } from '@/types/todo'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ROUTERS_CONFIG from '@/constants/router'
 import { Typography } from '@/components/ui/Typography'
 import { Button } from '@/components/ui/Button'
 import TodoItem from '@/components/domain/todo/TodoItem'
-import { PlusIcon } from '@radix-ui/react-icons'
-import { IconButton } from '@/components/ui/IconButton'
 
 interface TodoLayoutProps {
   children: React.ReactNode
@@ -33,11 +31,6 @@ const TodoLayout = ({ children, todos }: TodoLayoutProps) => {
 
         <div className="mt-8 flex">
           <aside className="flex h-[80svh] w-full max-w-md flex-col gap-4 overflow-y-auto rounded-md bg-gray-100 p-4">
-            <IconButton className="w-fit self-end border-2 border-gray-300 bg-white">
-              <Link to={ROUTERS_CONFIG.TODO}>
-                <PlusIcon className="h-6 w-6" />
-              </Link>
-            </IconButton>
             {todos.map((todo) => (
               <TodoItem key={`todo-${todo.id}`} {...todo} />
             ))}
